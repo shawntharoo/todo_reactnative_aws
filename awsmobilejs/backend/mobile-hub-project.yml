@@ -1,0 +1,155 @@
+--- !com.amazonaws.mobilehub.v0.Project 
+features:
+  cloudlogic: !com.amazonaws.mobilehub.v0.CloudLogic 
+    components:
+      Pets: !com.amazonaws.mobilehub.v0.API 
+        attributes:
+          disable-aws-auth: false
+          name: Pets
+          requires-signin: false
+          sdk-generation-stage-name: Development
+        paths:
+          /items: !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/itemsHandler-20180807211003.zip
+            description: 'Handler for calls to resource path : /items/{proxy+}'
+            environment: {}
+            handler: index.handler
+            hashcode: yjX70JONwwQrvtL+JuiZZQ5+LofwiL1vISAJUc3JkwE=
+            memorySize: '128'
+            modified: '2018-08-07T15:44:45.104+0000'
+            name: itemsHandler
+            runtime: nodejs6.10
+            timeout: '3'
+            version: 62Z.O.3nHdHhst28kAG5Bz_UF57CLcsX
+          '/items/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/itemsHandler-20180807211003.zip
+            description: 'Handler for calls to resource path : /items/{proxy+}'
+            environment: {}
+            handler: index.handler
+            hashcode: yjX70JONwwQrvtL+JuiZZQ5+LofwiL1vISAJUc3JkwE=
+            memorySize: '128'
+            modified: '2018-08-07T15:44:45.104+0000'
+            name: itemsHandler
+            runtime: nodejs6.10
+            timeout: '3'
+            version: 1iHSQ2uaEWJndIuvq5xCfGh9dSVxeItz
+      todo: !com.amazonaws.mobilehub.v0.API 
+        attributes:
+          description: task tracking
+          disable-aws-auth: false
+          name: todo
+          requires-signin: false
+          sdk-generation-stage-name: Development
+        paths:
+          /items: !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/itemsHandler-20180807211003.zip
+            description: 'Handler for calls to resource path : /items/{proxy+}'
+            environment: {}
+            handler: index.handler
+            hashcode: yjX70JONwwQrvtL+JuiZZQ5+LofwiL1vISAJUc3JkwE=
+            memorySize: '128'
+            modified: '2018-08-07T15:44:43.914+0000'
+            name: itemsHandler
+            runtime: nodejs6.10
+            timeout: '3'
+            version: FcGn3RLqJB2QTLawxkMhPGPn1VNaUMI2
+          '/items/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/itemsHandler-20180807211003.zip
+            description: 'Handler for calls to resource path : /items/{proxy+}'
+            environment: {}
+            handler: index.handler
+            hashcode: yjX70JONwwQrvtL+JuiZZQ5+LofwiL1vISAJUc3JkwE=
+            memorySize: '128'
+            modified: '2018-08-07T15:44:43.914+0000'
+            name: itemsHandler
+            runtime: nodejs6.10
+            timeout: '3'
+            version: zTYfYa.kSQ10RiSxsENzMeIhAAspfb2J
+  content-delivery: !com.amazonaws.mobilehub.v0.ContentDelivery 
+    attributes:
+      enabled: true
+      visibility: public-global
+    components:
+      release: !com.amazonaws.mobilehub.v0.Bucket {}
+  database: !com.amazonaws.mobilehub.v0.Database 
+    components:
+      database-nosql: !com.amazonaws.mobilehub.v0.NoSQLDatabase 
+        tables:
+          - !com.amazonaws.mobilehub.v0.NoSQLTable 
+            attributes:
+              assignGroup: S
+              assignUser: S
+              description: S
+              dueDate: S
+              taskId: S
+              title: S
+              userId: S
+            hashKeyName: taskId
+            hashKeyType: S
+            rangeKeyName: userId
+            rangeKeyType: S
+            tableName: ___DYNAMIC_PREFIX___-tasks
+            tablePrivacy: public
+          - !com.amazonaws.mobilehub.v0.NoSQLTable 
+            attributes:
+              petId: S
+              userId: S
+            hashKeyName: userId
+            hashKeyType: S
+            rangeKeyName: petId
+            rangeKeyType: S
+            tableName: ___DYNAMIC_PREFIX___-pets
+            tablePrivacy: protected
+          - !com.amazonaws.mobilehub.v0.NoSQLTable 
+            attributes:
+              assignGroup: S
+              assignUser: S
+              description: S
+              dueDate: S
+              taskId: S
+              title: S
+              userId: S
+            hashKeyName: userId
+            hashKeyType: S
+            rangeKeyName: taskId
+            rangeKeyType: S
+            tableName: ___DYNAMIC_PREFIX___-task
+            tablePrivacy: public
+  mobile-analytics: !com.amazonaws.mobilehub.v0.Pinpoint 
+    components:
+      analytics: !com.amazonaws.mobilehub.v0.PinpointAnalytics {}
+      messaging-push: !com.amazonaws.mobilehub.v0.PinpointMessaging 
+        attributes:
+          deliveryType: push
+  sign-in: !com.amazonaws.mobilehub.v0.SignIn 
+    attributes:
+      enabled: true
+      optional-sign-in: true
+    components:
+      sign-in-user-pools: !com.amazonaws.mobilehub.v0.UserPoolsIdentityProvider 
+        attributes:
+          alias-attributes:
+            - preferred_username
+            - phone_number
+          mfa-configuration: ON
+          name: userpool
+          password-policy: !com.amazonaws.mobilehub.ConvertibleMap 
+            min-length: '8'
+            require-lower-case: true
+            require-numbers: true
+            require-symbols: true
+            require-upper-case: true
+  user-files: !com.amazonaws.mobilehub.v0.UserFiles 
+    attributes:
+      enabled: true
+  user-profiles: !com.amazonaws.mobilehub.v0.UserSettings 
+    attributes:
+      enabled: true
+name: todo_react
+region: us-east-1
+sharedComponents:
+  push-gcm: !com.amazonaws.mobilehub.v0.PushPlatform 
+    attributes:
+      consumingFeatures: mobile-analytics
+      credential: 41594144654c635a47496b41526761564b62564f4269637757396341655141434141706859324e76645735304c576c6b414177334e6a6b334e6a51324d7a4d344d6a5541465746336379316a636e6c77644738746348566962476c6a4c57746c6551424551544e525a30684d647a4671637a567852584a7859334e696430524a4f475255574842556146464b4f554e4a4e47513455485176546c46474c79396b57466479546d78755a444a6a5445513163565a58656c55726233426e50543041415141485958647a4c5774746377424c59584a754f6d4633637a707262584d3664584d745a57467a644330784f6a517a4e7a41354d446b354d44597a4e5470725a586b764e7a68694d3255314e5467744f474e6b5a5330304d5751334c5467345a444d744d7a466a5954526c5a446b305a475134414b6342415145416548576a726a4f5974744532443062336d2f3661456f55617a61414777487a796535774350734f712f4b695a41414141666a423842676b71686b69473977304242776167627a4274416745414d4767474353714753496233445145484154416542676c67686b67425a514d45415334774551514d71647646666d4633356873574a6e7258416745516744734a58675733337636304e743374505a707943734e4a385965504e2b65713637744c4536674f48424a4e34326d396a445a79796347434b5242714b7051546c356974556954354771416b6f4a31774e67494141414141444141414541437334592f6467436c436b68347265474867365a53387851344e6e3770595732302f42626b6a2f2f2f2f2f77414141414646326c67372b446e5a61317947682b554141414375646146524c5450687064307a4b2f5366717061514b434f613455616b4633367671747635637250647233796e70536372326b552f48495a667a512f664f3249314e4b2f476951734b6c594f5841654e4261635352704f7a666b465047446e64744f6c4f335543734f73777a2b69584b78342b386c697762422b3834366a6d464d504767685944696b33556c564d36435649613833456154467133395058626c44786f4230446d2b54666b4f6f764b5a6a695a7a6732744867646e2b5044472b6f594868585977775259414b454932694178534d6e6865354f6f507446437556796b4b6235485a747a774247374235673032644a72346a70507a3545486b67426e4d4755434d51434a4a726b41636e634a436a555a4c71636e344b326538756d5878624e6d62743471593176346e436957305539416574706b447141306b5150354c554b64526667434d476a2b6e785455367a39624a4f41584c706842352f66574935517753385554343676456336733330665769724d723068446c71496e42722f3033446e5542486e773d3d
+      gcm-sender-id: 41594144654d47766f6a65663532564550506676504a596461373841655141434141706859324e76645735304c576c6b414177334e6a6b334e6a51324d7a4d344d6a5541465746336379316a636e6c77644738746348566962476c6a4c57746c6551424551586c4457484a6e576d7879617a5a494b79394652444a52524464584f56525459566c316432394b4d475932645446325131524f624578525a5578356445567a6557644d5a6d353057584a5451693935513231564e325a4250543041415141485958647a4c5774746377424c59584a754f6d4633637a707262584d3664584d745a57467a644330784f6a517a4e7a41354d446b354d44597a4e5470725a586b764e7a68694d3255314e5467744f474e6b5a5330304d5751334c5467345a444d744d7a466a5954526c5a446b305a475134414b6342415145416548576a726a4f5974744532443062336d2f3661456f55617a61414777487a796535774350734f712f4b695a41414141666a423842676b71686b69473977304242776167627a4274416745414d4767474353714753496233445145484154416542676c67686b67425a514d45415334774551514d366c79756772734c32304c4c3761706541674551674476627770444c73316a7079536738514f2b545061324353626a494e79724b6e556b336758357a536f68545a765a2b666b4e546e437737376438324333636b724d644d2f497a727852625539395a5648674941414141414441414145414351325a6f6f51566e377564636166487373742f694536566b617532787670564345467a41382f2f2f2f2f7741414141452f7353723778625434747a4852456249414141414d42597a7571464f79743073533547363252744638514166357447444e56413772376a4a645141426e4d4755434d4747656568424b4b344761426f496437572b5a45434365357377562b507345387936533473692f7675676a45732f6d67713644337357385a6a5a7a77586d746b414978414a734534455635496969684f42424f504c4b78576c4a2f342f6a4a634b392f366f4b64486f636f4b4c45716d6e575969546c50536f77576d7738497374347a68413d3d

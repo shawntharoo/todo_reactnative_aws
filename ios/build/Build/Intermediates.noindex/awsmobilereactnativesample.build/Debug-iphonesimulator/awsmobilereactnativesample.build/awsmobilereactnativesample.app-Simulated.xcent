@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>application-identifier</key>
+	<string>NWNL8W5U23.com.virtusa.gto.awsmobilereactnativesample</string>
+	<key>keychain-access-groups</key>
+	<array>
+		<string>NWNL8W5U23.com.virtusa.gto.awsmobilereactnativesample</string>
+	</array>
+</dict>
+</plist>
